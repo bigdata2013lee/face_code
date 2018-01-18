@@ -1,0 +1,36 @@
+version: 1
+
+loggers:
+  root:
+    level: DEBUG
+    handlers: [console]
+  log:
+    level: DEBUG
+    handlers: [log, console]
+    propagate: no
+
+  sqlalchemy:
+    level: DEBUG
+    handlers: [log, console]
+    propagate: no
+
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  timedRotating:
+    format: '%(asctime)s %(name)-12s %(levelname)-8s - %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+  log:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: timedRotating
+    filename: '{savepath}/log.log'
+    when: 'H'
+    interval: 1
+    backupCount: 168 # 7*24
+    encoding: 'utf8'

@@ -1,0 +1,20 @@
+log_savepath: '/wls/applogs/laoshanlu'  #日志保存目录
+worker_count: 1 #并发数量
+
+um_card_code_file: '/facepic/work_attendance/um_card_code.xlsx'     #um账号与身份证号对应信息文件
+camera_record_file: '/facepic/work_attendance/laoshanlu/识别记录.csv' #考勤记录文件
+
+pic_inpath: '/facepic/work_attendance/laoshanlu'  #待处理的文件根目录
+pic_outpath: '/facepic/out_work_attendance/laoshanlu' #处理完成的文件存放根目录
+
+#cyberark配置以及数据库连接串
+db:
+    uri: 'oracle://faceopr:{password}@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.31.11.252)(PORT=1543))(ADDRESS=(PROTOCOL=TCP)(HOST=10.31.11.253)(PORT=1543)))(CONNECT_DATA=(SERVICE_NAME=srv_t0face_face_1)))'
+    cyberark:
+        url: 'https://test-ccp.paic.com.cn/pidms/rest/pwd/getPassword'
+        appId: 'App_XFACE_CORE__ae35c0'
+        safe: 'AIM_XFACE_CORE'
+        folder: 'root'
+        object: 'faceopr'
+        key: 'ef8ac7645a991ecc'
+        sign: 'App_XFACE_CORE__ae35c0&ef8ac7645a991ecc'
